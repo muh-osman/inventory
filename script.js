@@ -1,10 +1,12 @@
-var s1 = document.querySelector(".s1");
-var s2 = document.querySelector(".s2");
-var s3 = document.querySelector(".s3");
-var s4 = document.querySelector(".s4");
-var s5 = document.querySelector(".s5");
-var swiperOrderList = [s1, s2, s3, s4, s5];
-var swiperClassList = [
+let s1 = document.querySelector(".s1");
+let s2 = document.querySelector(".s2");
+let s3 = document.querySelector(".s3");
+let s4 = document.querySelector(".s4");
+let s5 = document.querySelector(".s5");
+
+let swiperOrderList = [s1, s2, s3, s4, s5];
+
+let swiperClassList = [
   "swiper-1",
   "swiper-2",
   "swiper-3",
@@ -12,11 +14,11 @@ var swiperClassList = [
   "swiper-5",
 ];
 
+let activeIndex = 2;
+
 function setInitialClasses() {
   swiperOrderList.forEach(function (swiper, i) {
-    swiperClassList.forEach(function (c) {
-      swiper.classList.remove(c);
-    });
+    swiper.classList.remove(...swiperClassList);
     swiper.classList.add(swiperClassList[i]);
   });
 }
@@ -26,43 +28,65 @@ function setActiveSlide(swiperElement) {
     swiper.classList.remove("active");
   });
   swiperElement.classList.add("active");
-  if (swiperElement.classList.contains("s5")) {
-    document.getElementById("message").style.display = "block";
-  } else {
-    document.getElementById("message").style.display = "none";
-  }
 }
 
-document.querySelectorAll(".swiper").forEach(function (swiper) {
+
+
+swiperOrderList.forEach(function (swiper, i) {
   swiper.addEventListener("click", function () {
     setActiveSlide(swiper);
+
+
+
+    swiperOrderList[activeIndex].classList.remove('active');
+    const prevActiveIndex = activeIndex;
+    activeIndex = (i + swiperOrderList.length) % swiperOrderList.length;
+    swiperOrderList[activeIndex].classList.add('active');
+
+    // Rotate array based on active element position
+    const rotationAmount =
+      (activeIndex - prevActiveIndex + swiperOrderList.length) % swiperOrderList.length;
+    rotateArray(swiperOrderList, rotationAmount);
+    setInitialClasses();
   });
 });
 
-// Detecting arrow key presses
+function rotateArray(arr, amount) {
+  if (amount > 0) {
+    // Rotate array right
+    const removedItems = arr.splice(0, amount);
+    arr.push(...removedItems);
+  } else if (amount < 0) {
+    // Rotate array left
+    const removedItems = arr.splice(amount);
+    arr.unshift(...removedItems);
+  }
+}
+
+// Control by arrows
 document.onkeydown = checkKey;
 
 function checkKey(e) {
   e = e || window.event;
 
   if (e.keyCode == "38") {
-    // up arrow
-    console.log("up");
-    var s = swiperOrderList.pop();
-    swiperOrderList.unshift(s);
-    setInitialClasses(); // Reset classes after rotation
-    setActiveSlide(s); // Set active class after rotation
+    // Arrow up
+    // let s = swiperOrderList.pop();
+    // swiperOrderList.unshift(s);
+    // setInitialClasses();
+    // setActiveSlide(swiperOrderList[2]);
+    setActiveSlide(activeIndex - 1);
   } else if (e.keyCode == "40") {
-    // down arrow
-    console.log("down");
-    var s = swiperOrderList.shift();
-    swiperOrderList.push(s);
-    setInitialClasses(); // Reset classes after rotation
-    setActiveSlide(s); // Set active class after rotation
+    // Arrow down
+    // let s = swiperOrderList.shift();
+    // swiperOrderList.push(s);
+    // setInitialClasses();
+    // setActiveSlide(swiperOrderList[2]);
+    setActiveSlide(activeIndex + 1);    
   }
 }
 
-document.body.onload = function () {
+window.onload = function () {
   setInitialClasses();
-  setActiveSlide(swiperOrderList[0]); // Set the first element as active
+  setActiveSlide(swiperOrderList[activeIndex]);
 };
