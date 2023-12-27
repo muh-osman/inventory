@@ -1,10 +1,4 @@
-let s1 = document.querySelector(".s1");
-let s2 = document.querySelector(".s2");
-let s3 = document.querySelector(".s3");
-let s4 = document.querySelector(".s4");
-let s5 = document.querySelector(".s5");
-
-let swiperOrderList = [s1, s2, s3, s4, s5];
+let swiperOrderList = [...document.querySelectorAll(".swiper")];
 
 let swiperClassList = [
   "swiper-1",
@@ -14,6 +8,7 @@ let swiperClassList = [
   "swiper-5",
 ];
 
+// Set initial active item
 let activeIndex = 2;
 
 function setInitialClasses() {
@@ -30,22 +25,20 @@ function setActiveSlide(swiperElement) {
   swiperElement.classList.add("active");
 }
 
-
-
+// Handle mouse click on items
 swiperOrderList.forEach(function (swiper, i) {
   swiper.addEventListener("click", function () {
     setActiveSlide(swiper);
 
-
-
-    swiperOrderList[activeIndex].classList.remove('active');
+    swiperOrderList[activeIndex].classList.remove("active");
     const prevActiveIndex = activeIndex;
     activeIndex = (i + swiperOrderList.length) % swiperOrderList.length;
-    swiperOrderList[activeIndex].classList.add('active');
+    swiperOrderList[activeIndex].classList.add("active");
 
     // Rotate array based on active element position
     const rotationAmount =
-      (activeIndex - prevActiveIndex + swiperOrderList.length) % swiperOrderList.length;
+      (activeIndex - prevActiveIndex + swiperOrderList.length) %
+      swiperOrderList.length;
     rotateArray(swiperOrderList, rotationAmount);
     setInitialClasses();
   });
@@ -63,7 +56,7 @@ function rotateArray(arr, amount) {
   }
 }
 
-// Control by arrows
+// Handle keyboard arrow keys
 document.onkeydown = checkKey;
 
 function checkKey(e) {
@@ -82,7 +75,7 @@ function checkKey(e) {
     // swiperOrderList.push(s);
     // setInitialClasses();
     // setActiveSlide(swiperOrderList[2]);
-    setActiveSlide(activeIndex + 1);    
+    setActiveSlide(activeIndex + 1);
   }
 }
 
