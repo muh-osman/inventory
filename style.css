@@ -8,10 +8,12 @@ body {
   height: 100vh;
   overflow: hidden;
   padding: 16px;
-  background-image: url(./images/chessboard.jpg);
+  /* background-image: url(./images/chessboard.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  background-color: #000;
 }
 
 .con {
@@ -37,11 +39,12 @@ body {
   transform: translate(-50%, 100px);
 }
 
-.active {
+/* .active {
   width: 21%;
   height: 100px;
-  /* background-color: rgb(191, 187, 187) !important; */
-}
+  background-color: rgb(191, 187, 187) !important;
+  transition: 0.3s;
+} */
 
 .swiper-1 {
   transform: translateY(-10px) translateX(20px);
@@ -53,6 +56,11 @@ body {
 
 .swiper-3 {
   transform: translateY(220%) translateX(100px);
+
+  width: 21%;
+  height: 100px;
+  background-color: rgb(191, 187, 187) !important;
+  transition: 0.3s;
 }
 
 .swiper-4 {
@@ -64,21 +72,21 @@ body {
 }
 
 .s1 {
-  background-color: red;
+  /* background-color: red; */
 }
 
 .s2 {
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .s3 {
-  background-color: green;
+  /* background-color: green; */
 }
 
 .s4 {
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .s5 {
-  background-color: purple;
+  /* background-color: purple; */
 }
