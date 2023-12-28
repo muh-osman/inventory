@@ -23,6 +23,10 @@ function setActiveSlide(index) {
   rotateArray(swiperOrderList, rotationAmount);
   setInitialClasses();
   activeIndex = index;
+
+  const imgSrc = swiperOrderList[activeIndex].getAttribute("data-img");
+  const imgElement = document.querySelector("img");
+  imgElement.setAttribute("src", imgSrc);
 }
 
 function rotateArray(arr, amount) {
