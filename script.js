@@ -10,6 +10,9 @@ let swiperClassList = [
 
 // Set initial active item
 let activeIndex = 2;
+swiperOrderList[activeIndex].classList.add("active");
+
+setInitialClasses();
 
 function setInitialClasses() {
   swiperOrderList.forEach(function (swiper, i) {
@@ -25,17 +28,14 @@ function setActiveSlide(swiperElement) {
   swiperElement.classList.add("active");
 }
 
-// Handle mouse click on items
+// Handle mouse click
 swiperOrderList.forEach(function (swiper, i) {
   swiper.addEventListener("click", function () {
     setActiveSlide(swiper);
 
-    swiperOrderList[activeIndex].classList.remove("active");
     const prevActiveIndex = activeIndex;
     activeIndex = (i + swiperOrderList.length) % swiperOrderList.length;
-    swiperOrderList[activeIndex].classList.add("active");
 
-    // Rotate array based on active element position
     const rotationAmount =
       (activeIndex - prevActiveIndex + swiperOrderList.length) %
       swiperOrderList.length;
@@ -62,24 +62,19 @@ document.onkeydown = checkKey;
 function checkKey(e) {
   e = e || window.event;
 
-  if (e.keyCode == "38") {
+  if (e.keyCode == 38) {
     // Arrow up
-    // let s = swiperOrderList.pop();
-    // swiperOrderList.unshift(s);
-    // setInitialClasses();
-    // setActiveSlide(swiperOrderList[2]);
-    setActiveSlide(activeIndex - 1);
-  } else if (e.keyCode == "40") {
+    e.preventDefault();
+    let s = swiperOrderList.pop();
+    swiperOrderList.unshift(s);
+    setInitialClasses();
+    setActiveSlide(swiperOrderList[2]);
+  } else if (e.keyCode == 40) {
     // Arrow down
-    // let s = swiperOrderList.shift();
-    // swiperOrderList.push(s);
-    // setInitialClasses();
-    // setActiveSlide(swiperOrderList[2]);
-    setActiveSlide(activeIndex + 1);
+    e.preventDefault();
+    let s = swiperOrderList.shift();
+    swiperOrderList.push(s);
+    setInitialClasses();
+    setActiveSlide(swiperOrderList[2]);
   }
 }
-
-window.onload = function () {
-  setInitialClasses();
-  setActiveSlide(swiperOrderList[activeIndex]);
-};
