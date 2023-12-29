@@ -19,22 +19,22 @@ h1 {
   font-size: 45px;
   font-weight: 600;
 
-    /* Fallback: Set a background color. */
-    background-color: red;
-  
-    /* Create the gradient. */
-    background-image: linear-gradient(0deg, red, orange);
-    
-    /* Set the background size and repeat properties. */
-    background-size: 100%;
-    background-repeat: repeat;
-  
-    /* Use the text as a mask for the background. */
-    /* This will show the gradient as a text color rather than element bg. */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
+  /* Fallback: Set a background color. */
+  background-color: red;
+
+  /* Create the gradient. */
+  background-image: linear-gradient(0deg, red, orange);
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 .box {
@@ -43,6 +43,7 @@ h1 {
   align-items: center;
   justify-content: center;
   width: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .image_box {
@@ -53,7 +54,7 @@ h1 {
 }
 
 img {
-  box-shadow: 22px 14px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 22px 14px 0px 0px rgba(0, 0, 0, 0.5);
   border: 5px solid #a8e3d2;
   width: 450px;
 }
@@ -66,13 +67,13 @@ img {
   transform-style: preserve-3d;
   perspective: 150px;
   position: relative;
+  z-index: 1000;
   /* background-color: red; */
 }
 
 .con div {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
 }
 
 .swiper {
@@ -81,36 +82,34 @@ img {
   position: absolute;
   top: 0;
   left: 40%;
-  font-size: 24px;
+  font-size: 32px;
   text-align: center;
   transition: transform 0.3s;
   cursor: pointer;
   transform: translate(-50%, 100px);
-  box-shadow: 18px 12px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 18px 12px 0px 0px rgba(0, 0, 0, 0.5);
 
   /* background-color: rgba(0,0,0,0.75); */
   border: 5px solid #a8e3d2;
   color: orange;
   font-weight: 900;
 
+  /* Fallback: Set a background color. */
+  /* background-color: red; */
 
-      /* Fallback: Set a background color. */
-      /* background-color: red; */
-  
-      /* Create the gradient. */
-      /* background-image: linear-gradient(0deg, red, orange); */
-      
-      /* Set the background size and repeat properties. */
-      /* background-size: 100%; */
-      /* background-repeat: repeat; */
-    
-      /* Use the text as a mask for the background. */
-      /* This will show the gradient as a text color rather than element bg. */
-      /* -webkit-background-clip: text; */
-      /* -webkit-text-fill-color: transparent;  */
-      /* -moz-background-clip: text; */
-      /* -moz-text-fill-color: transparent; */
+  /* Create the gradient. */
+  /* background-image: linear-gradient(0deg, red, orange); */
 
+  /* Set the background size and repeat properties. */
+  /* background-size: 100%; */
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+  /* -moz-background-clip: text; */
+  /* -moz-text-fill-color: transparent; */
 }
 
 /* .active {
@@ -133,8 +132,8 @@ img {
   transition: 0.3s;
 }
 
-
 .swiper-4 {
+  position: relative;
   transform: translateY(300px) translateX(50px);
   transition: 0.3s;
 
@@ -151,13 +150,11 @@ img {
 
 /* Define the keyframes for the animation */
 @keyframes color-loop {
-  /* Start with the first color */
   0% {
-    background-color: #b83635;
+    background-color: rgb(175, 42, 42);
   }
-  /* End with the second color */
   100% {
-    background-color: #bca73f;
+    background-color: rgb(180, 133, 46);
   }
 }
 

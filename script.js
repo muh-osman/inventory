@@ -46,6 +46,7 @@ function rotateArray(arr, amount) {
 swiperOrderList.forEach((el, index) => {
   el.addEventListener("click", () => {
     setActiveSlide(index);
+    audio.play();
   });
 });
 
