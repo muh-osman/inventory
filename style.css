@@ -97,7 +97,26 @@ img {
   transition: 0.3s;
 
   /* Active  */
-  background-color: orangered !important;
+  /* Assign the animation name */
+  animation-name: color-loop;
+  /* Set the animation duration */
+  animation-duration: 1s;
+  /* Make the animation repeat infinitely */
+  animation-iteration-count: infinite;
+  /* Make the animation alternate between the colors */
+  animation-direction: alternate;
+}
+
+/* Define the keyframes for the animation */
+@keyframes color-loop {
+  /* Start with the first color */
+  0% {
+    background-color: #b83635;
+  }
+  /* End with the second color */
+  100% {
+    background-color: #bca73f;
+  }
 }
 
 .swiper-5 {
