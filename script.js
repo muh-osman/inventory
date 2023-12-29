@@ -5,8 +5,10 @@ const swiperClassList = [
   "swiper-3",
   "swiper-4",
   "swiper-5",
+  "swiper-6",
+  "swiper-7",
 ];
-let activeIndex = 2;
+let activeIndex = 3;
 
 setInitialClasses();
 
