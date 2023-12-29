@@ -8,6 +8,8 @@ const swiperClassList = [
   "swiper-6",
   "swiper-7",
 ];
+const audio = new Audio('./TICKING.mp3');
+
 let activeIndex = 3;
 
 setInitialClasses();
@@ -53,11 +55,13 @@ function checkKey(e) {
   e = e || window.event;
 
   if (e.keyCode === 38) {
+    audio.play();
     e.preventDefault();
     setActiveSlide(
       (activeIndex - 1 + swiperOrderList.length) % swiperOrderList.length
     );
   } else if (e.keyCode === 40) {
+    audio.play();
     e.preventDefault();
     setActiveSlide((activeIndex + 1) % swiperOrderList.length);
   }
