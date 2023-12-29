@@ -8,7 +8,7 @@ const swiperClassList = [
   "swiper-6",
   "swiper-7",
 ];
-const audio = new Audio('./TICKING.mp3');
+const audio = new Audio("./TICKING.mp3");
 
 let activeIndex = 3;
 
